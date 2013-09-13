@@ -9,4 +9,3 @@ void division();
 #endif // FUN_H_INCLUDED
 
 
-

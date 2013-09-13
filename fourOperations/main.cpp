@@ -2,11 +2,9 @@
 	> File Name: main.cpp
 	> Author: wangning
 	> Mail: 201207wangning@edu2act.org
-	> Created Time: 2013Äê09ÔÂ05ÈÕ ÐÇÆÚËÄ 14Ê±40·Ö43Ãë
+	> Created Time: 2013å¹´09æœˆ05æ—¥ æ˜ŸæœŸå›› 14æ—¶40åˆ†43ç§’
  ************************************************************************/
 #include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
 #include "fourOperations.h"
 
 using namespace std;
@@ -15,21 +13,21 @@ int main()
 {
     char choice;
 
-    cout << "\n»¶Ó­Ê¹ÓÃËÄÔòÔËËãÐ¡³ÌÐò\n" << endl;
+    cout << "\næ¬¢è¿Žä½¿ç”¨å››åˆ™è¿ç®—å°ç¨‹åº\n" << endl;
    
 	while(1)
 	{
-		cout << "\nÇëÑ¡Ôñ²Ù×÷ÀàÐÍ:" << endl;
-		cout << "A:¼Ó·¨ÔËËã" << endl;
-		cout << "S:¼õ·¨ÔËËã" << endl;
-		cout << "M:³Ë·¨ÔËËã" << endl;
-		cout << "D:³ý·¨ÔËËã" << endl;
-		cout << "Q:ÍË³ö³ÌÐòÔËÐÐ" << endl;
+		cout << "\nè¯·é€‰æ‹©æ“ä½œç±»åž‹:" << endl;
+		cout << "A:åŠ æ³•è¿ç®—" << endl;
+		cout << "S:å‡æ³•è¿ç®—" << endl;
+		cout << "M:ä¹˜æ³•è¿ç®—" << endl;
+		cout << "D:é™¤æ³•è¿ç®—" << endl;
+		cout << "Q:é€€å‡ºç¨‹åºè¿è¡Œ" << endl;
 
-		cout << "ÇëÑ¡ÔñÄúµÄ²Ù×÷£º";
-		cin.get(choice);
+		cout << "è¯·é€‰æ‹©æ‚¨çš„æ“ä½œï¼š";
+		cin >> choice;
 		fflush(stdin);
-		
+
 		switch(choice)
 		{
 			case 'A': 
@@ -57,9 +55,9 @@ int main()
 				fflush(stdin);	
 				break;
 			case 'Q': return 0;
-		
+
 			default: 
-				cout << "\n**********ÊäÈëÓÐÎó£¬ÇëÖØÐÂÊäÈë£¡************\n" << endl;
+				cout << "\n**********è¾“å…¥æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼************\n" << endl;
 		}
 	}
 
