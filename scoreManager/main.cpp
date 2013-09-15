@@ -12,19 +12,40 @@ using namespace std;
 int main()
 {
     char choice;
+    StudentNode *aHead = NULL;
+    int flag = 0;
 
-    choice = viewMenu();
+    aHead = creatList();
 
-    switch(choice)
+    while(1)
     {
-        case 'A': StudentNode *creatList(void);
-        case 'D': deleteRecordFromList(StudentNode *aHead);
-        case 'P': printRecord();
-        case 'M': findAndEdit(StudentNode *aHead);
-        case 'Q': return 0;
+        choice = viewMenu();
+        switch(choice)
+        {
+            case 'A':
+                if(insertStudentNode(aHead))
+                {
+                    break;
+                }
+                else
+                {
+                    return 0;
+                }
+            case 'D':
+                deleteRecordFromList(aHead);
+                break;
+            case 'M':
+                findAndEdit(aHead);
+                break;
+            case 'P':
+                printList(aHead);
+                break;
+            case 'Q':
+                return 0;
+                break;
+        }
     }
 
-
-
+    cout << "系统退出！" << endl;
     return 0;
 }

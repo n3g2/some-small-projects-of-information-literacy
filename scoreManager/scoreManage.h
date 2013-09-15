@@ -1,12 +1,19 @@
 #ifndef SCOREMANAGE_H_INCLUDED
 #define SCOREMANAGE_H_INCLUDED
 
+typedef struct SubjectNode
+{
+    char subName[20];
+    int subScore;
+    struct SubjectNode *next = NULL;
+}SubjectNode;
+
 typedef struct StudentNode
 {
-    char name[30];  /* 姓名*/
-    int mathScore;  /* 数学成绩*/
-    int engScore;   /* 英语成绩*/
-    struct StudentNode *next;   /* 下一个成绩结点指针*/
+    int ID;
+    char stuName[30];
+    SubjectNode *subLists = NULL;
+    struct StudentNode *next = NULL;
 }StudentNode;
 
 //显示菜单
@@ -18,16 +25,13 @@ StudentNode *creatList(void);
 //插入成绩
 int insertStudentNode(StudentNode *aHead);
 
-//查询成绩
-int printList(StudentNode *aHead);
+//删除成绩
+int deleteRecordFromList(StudentNode *aHead);
 
 //修改成绩
 int findAndEdit(StudentNode *aHead);
 
-//删除成绩
-int deleteRecordFromList(StudentNode *aHead);
-
-//打印成绩
-void printRecordList();
+//查询成绩
+int printList(StudentNode *aHead);
 
 #endif // SCOREMANAGE_H_INCLUDED
