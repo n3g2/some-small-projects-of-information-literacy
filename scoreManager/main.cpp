@@ -5,7 +5,7 @@
 	> Created Time: 2013年09月12日 星期四 14时40分43秒
  ************************************************************************/
 #include <iostream>
-#include "scoreManage.h"
+#include "scoreManager.h"
 
 using namespace std;
 
@@ -23,7 +23,7 @@ int main()
         switch(choice)
         {
             case 'A':
-                if(insertStudentNode(aHead))
+                if( insertStudentNode(aHead) )
                 {
                     break;
                 }
@@ -31,6 +31,8 @@ int main()
                 {
                     return 0;
                 }
+
+				break;
             case 'D':
                 deleteRecordFromList(aHead);
                 break;
