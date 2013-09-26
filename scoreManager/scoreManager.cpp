@@ -6,9 +6,9 @@
  ************************************************************************/
 #include <iostream>
 #include <stdio.h>
-#include <stdlib.h>  
+#include <stdlib.h>  //malloc函数
 #include <string.h>
-#include "scoreManager.h"
+#include "scoreManagerTest.h"
 
 using namespace std;
 
@@ -17,6 +17,7 @@ char viewMenu()
 {
     char choice;
 
+	system("color f2");  //only for(windows)
 	cout << endl;
     cout << "              ================欢迎使用成绩管理系统-v0.1==========" << endl << endl;
 
@@ -98,6 +99,7 @@ int insertStudentNode(StudentNode *aHead)
             cout << "开辟学生科目内存时失败！";
             return 0;
         }
+		p -> subListsLength = subNum;
 
 		//为学科列表的科目名称区赋值
         for(i = 0; i < subNum; i++ )
@@ -116,7 +118,7 @@ int insertStudentNode(StudentNode *aHead)
 			cin >> q[i].subScore;
 			fflush(stdin);
 		}
-
+		
         cout << "请核对新插入的学生信息：" << endl;
         cout << "学号:" << p -> ID;
         cout << " 姓名:" << p -> stuName;
@@ -142,13 +144,132 @@ int insertStudentNode(StudentNode *aHead)
 //删除成绩
 int deleteRecordFromList(StudentNode *aHead)
 {
+	StudentNode *p = aHead;
+	StudentNode *s = NULL;
+	
+	while( p -> next)
+	{
+		s = p -> next;
+		free(p->subLists);
+		p->subLists = NULL;
+		free(p);
+		p = s;
+	}
+	free(p->subLists);
+	p -> subLists = NULL;
+	free(p);
+
+	cout << "删除链表成功!" << endl;
+	system("pause");
+	system("cls");
 
 	return 0;
 }
 
 //修改成绩
 int findAndEdit(StudentNode *aHead)
-{
+{	
+	StudentNode *p = aHead;
+	SubjectNode *q = NULL;
+	char choice[20];
+	char *stuId = "学号";
+	char *stuNa = "姓名";
+	int checkId;
+	char checkNa[20];
+	int find = 0;
+	
+	cout << "请输入查询方式(学号或姓名)：";
+	cin >> choice;
+	fflush(stdin);
+
+	if(!(strcmp(stuId,choice)))
+	{	
+		cout << "请输入学号：";
+		cin >> checkId;
+		fflush(stdin);
+		while( p = p -> next )
+		{
+			if(p -> ID == checkId )
+			{
+				find = 1;
+				cout << "学号:";
+				cout << p -> ID;
+				cout << "  姓名:";
+				cout << p -> stuName;
+				q = p -> subLists;
+				for(int i = 0; i < p -> subListsLength; i++)
+				{
+					cout << "  " << q[i].subName << ":";
+					cout << q[i].subScore;
+				}
+				cout << endl;
+			}
+		}
+		if(find == 0)
+		{
+			cout << "未查询到学号为" << checkId << "的同学！" << endl;
+		}
+	}
+	else if(!(strcmp(stuNa,choice)))
+	{
+		cout << "请输入姓名：";
+		cin >> checkNa;
+		fflush(stdin);
+		while( p = p -> next )
+		{
+			if(!(strcmp(checkNa,p -> stuName)))
+			{
+				find = 1;
+				cout << "学号:";
+				cout << p -> ID;
+				cout << "  姓名:";
+				cout << p -> stuName;
+				q = p -> subLists;
+				for(int i = 0; i < p -> subListsLength; i++)
+				{
+					cout << "  " << q[i].subName << ":";
+					cout << q[i].subScore;
+				}
+				cout << endl;
+			}
+		}
+		if(0 == find)
+		{
+			cout << "未查询到姓名为" << checkNa << "的同学！" << endl;
+		}
+	}
+	else 
+	{
+		cout << "查询条件有误！" << endl;
+	}
+
+	if(1 == find)
+	{		
+			q = p -> subLists;
+			cout << "请输入要对该学生更新的信息：" << endl;
+			cout << "学号：";
+			cin >> p -> ID;
+			cout << "姓名：";
+			cin >> p -> stuName;
+			for(int i = 0; i < p -> subListsLength; i++)
+			{
+				cout << q[i].subName << ":";
+				cin >> q[i].subScore;
+				fflush(stdin);
+			}
+		
+			cout << "请核对新插入的学生信息：" << endl;
+			cout << "学号:" << p -> ID;
+			cout << " 姓名:" << p -> stuName;
+			for(int i = 0; i < p -> subListsLength; i++)
+			{
+				cout << " " << q[i].subName << ":";
+				cout << q[i].subScore;
+			}	
+	}
+
+	system("pause");
+	system("cls");
 	return 0;
 }
 
@@ -163,12 +284,12 @@ int printList(StudentNode *aHead)
     {
         cout << "学号:";
         cout << p -> ID;
-        cout << " 姓名:";
+        cout << "  姓名:";
         cout << p -> stuName;
 		q = p -> subLists;
-        for(i = 0; i < 2; i++)
+        for(i = 0; i < p -> subListsLength; i++)
 		{
-			cout << " " << q[i].subName << ":";
+			cout << "  " << q[i].subName << ":";
 			cout << q[i].subScore;
 		}
 		cout << endl;

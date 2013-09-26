@@ -5,7 +5,7 @@
 	> Created Time: 2013年09月12日 星期四 14时40分43秒
  ************************************************************************/
 #include <iostream>
-#include "scoreManager.h"
+#include "scoreManagerTest.h"
 
 using namespace std;
 
@@ -31,7 +31,7 @@ int main()
                 {
                     return 0;
                 }
-
+		
 				break;
             case 'D':
                 deleteRecordFromList(aHead);
@@ -45,6 +45,8 @@ int main()
             case 'Q':
                 return 0;
                 break;
+			default:
+				cout << "输入有误！" << endl;
         }
     }
 

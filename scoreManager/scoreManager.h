@@ -1,5 +1,8 @@
 #ifndef SCOREMANAGE_H_INCLUDED
 #define SCOREMANAGE_H_INCLUDED
+#include <iostream>
+#include <string>
+using namespace std;
 
 typedef struct swapSub
 {
@@ -17,6 +20,7 @@ typedef struct StudentNode
     int ID;
     char stuName[20];
     SubjectNode *subLists;
+	int subListsLength;
     struct StudentNode *next;
 }StudentNode;
 
