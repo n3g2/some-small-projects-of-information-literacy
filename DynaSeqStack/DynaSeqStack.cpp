@@ -69,8 +69,7 @@ void DestroyStack(SqStack *S)
 ------------------------------------------------------------*/
 bool StackEmpty(SqStack S)
 {	
-	if(S.base == S.top) return TRUE;
-	return FALSE;
+	return S.base == S.top;
 }
 
 /*------------------------------------------------------------
