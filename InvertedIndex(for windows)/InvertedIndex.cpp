@@ -2,7 +2,7 @@
 #include "InvertedIndex.h"
 #include "JR_Color.h"
 
-//ÔªËØÎ»ÖÃÀà
+//å…ƒç´ ä½ç½®ç±»
 Location::Location(int aRow, int aCol, int aLength, Location *aNext)
 {
 	m_row = aRow;
@@ -54,7 +54,7 @@ Location * Location::getNext() const
 }
 void Location::display() const
 {
-	if( m_next )				//µİ¹éÊä³ölocationList£¬ËùÒÔ¿´µ½µÄÒ²ÊÇµ¹ĞğÎ»ÖÃÁĞ±í
+	if( m_next )				//é€’å½’è¾“å‡ºlocationListï¼Œæ‰€ä»¥çœ‹åˆ°çš„ä¹Ÿæ˜¯å€’å™ä½ç½®åˆ—è¡¨
 	{
 		m_next ->display();
 	}
@@ -64,7 +64,7 @@ void Location::display() const
 
 
 
-//ËÑË÷¼üÖµÀà(Ë÷Òı±íÔªËØ)
+//æœç´¢é”®å€¼ç±»(ç´¢å¼•è¡¨å…ƒç´ )
 Seed::Seed(char * aKey, int aFrequency, Location * aLocation, Seed * aNext)
 {
 	m_key = new char[strlen(aKey)+1];
@@ -121,21 +121,21 @@ Seed * Seed::getNext() const
 }
 void Seed::display() const
 {
-	if( m_next )   //µİ¹éµ÷ÓÃÏÔÊ¾seedÁĞ±í£¬ËùÒÔ¿´µ½µÄseelistsÎªµ¹ĞğÏÔÊ¾µÄ
+	if( m_next )   //é€’å½’è°ƒç”¨æ˜¾ç¤ºseedåˆ—è¡¨ï¼Œæ‰€ä»¥çœ‹åˆ°çš„seelistsä¸ºå€’å™æ˜¾ç¤ºçš„
 	{
 		m_next ->display();   
 	}
 
-	cout << m_key << ' '; //keyÖµ
+	cout << m_key << ' '; //keyå€¼
 
 	cout << m_frequency << "times ";
 
-	m_locationList ->display(); //keyÖµËùÔÚÎ»ÖÃµÄÁĞ±í(Ò²»áµİ¹é)
+	m_locationList ->display(); //keyå€¼æ‰€åœ¨ä½ç½®çš„åˆ—è¡¨(ä¹Ÿä¼šé€’å½’)
 	
 	cout << endl;
 }
 
-//¶ÎÂäÁ´±í
+//æ®µè½é“¾è¡¨
 Section::Section(int aMark, char * aContent, Section * aNext)
 {
 	m_mark = aMark;
@@ -188,7 +188,7 @@ void Section::display() const
 	cout << m_mark << ":" << m_content << endl;
 }
 
-//¶ÌÎÄÅÀ³æÀà
+//çŸ­æ–‡çˆ¬è™«ç±»
 essayReptiles::essayReptiles(char * aDate, char * aTitle, char * anEssay)
 {
 	m_date = new char[strlen(aDate)+1];
@@ -203,16 +203,16 @@ essayReptiles::essayReptiles(char * aDate, char * aTitle, char * anEssay)
 	m_unique = NULL;
 
 	m_sectionList = NULL;
-	m_sectionSize = 0; //ÎÒµÄ¶ÎÊı
+	m_sectionSize = 0; //æˆ‘çš„æ®µæ•°
 	m_seedList = NULL;
-	m_seedSize = 0;	//¼üÖµ¸öÊı
+	m_seedSize = 0;	//é”®å€¼ä¸ªæ•°
 
 	int wordIndex = 0;
-	int wordCount = 0;     //ÕûÆª¶ÌÎÄµ±Ç°µ¥´ÊÎ»ÖÃ
-	int tempWordCount = 0; // µ¥´ÊµÄÊ××ÖÄ¸Î»ÖÃ £¬ÖµÓÉ wordCount À´  
-	int sectionWordCount = 0; //µ±Ç°¶ÎµÄµ¥´ÊµÄÎ»ÖÃ
+	int wordCount = 0;     //æ•´ç¯‡çŸ­æ–‡å½“å‰å•è¯ä½ç½®
+	int tempWordCount = 0; // å•è¯çš„é¦–å­—æ¯ä½ç½® ï¼Œå€¼ç”± wordCount æ¥  
+	int sectionWordCount = 0; //å½“å‰æ®µçš„å•è¯çš„ä½ç½®
 
-	int sectionCount = 0;  //¶ÎÂä¼ÆÊı
+	int sectionCount = 0;  //æ®µè½è®¡æ•°
 	char * tempWord = NULL;
 	Seed ** seed_p = &m_seedList;
 	Seed * temp_seed_p = NULL;
@@ -222,22 +222,22 @@ essayReptiles::essayReptiles(char * aDate, char * aTitle, char * anEssay)
 	Location * temp_location = NULL;
 
 	char * tempSection = NULL;
-	Section * temp_section_p = m_sectionList; //¶ÎÁĞ±í£¬²»ĞèÒªÃ¿´Î±éÀúÊÇ·ñÒÑÓĞÖØ¸´¶Î
+	Section * temp_section_p = m_sectionList; //æ®µåˆ—è¡¨ï¼Œä¸éœ€è¦æ¯æ¬¡éå†æ˜¯å¦å·²æœ‰é‡å¤æ®µ
 
-	//ÆµÊı¼ÇÂ¼
+	//é¢‘æ•°è®°å½•
 	Seed * m_frequency_temp = NULL;
 	int frequencyFlag = 0;
 
-	for(int i = 0; i < strlen(m_essay); i++, sectionWordCount++)   //É¨ÃèÈ«ÎÄ£¬Ò»´Î±éÀúÅÀ³öËùÓĞ¶«Î÷
+	for(int i = 0; i < strlen(m_essay); i++, sectionWordCount++)   //æ‰«æå…¨æ–‡ï¼Œä¸€æ¬¡éå†çˆ¬å‡ºæ‰€æœ‰ä¸œè¥¿
 	{	
-		//É¨Ãèµ½Ò»¸ö´Ê
+		//æ‰«æåˆ°ä¸€ä¸ªè¯
 		//if( m_essay[i] == ' ' || m_essay[i] == ',' || m_essay[i] == '.' || m_essay[i] == '\\' || m_essay[i] == '(' || m_essay[i] == ')' )
 		if( !isalpha(m_essay[i]) ) 
 		{	
-			tempWordCount = wordCount;  //´æ´¢µ±Ç°µ¥´ÊµÄÊ××ÖÄ¸Î»ÖÃ
-			tempWord = new char[i - tempWordCount + 1];  //´æ´¢Æ´½Óµ¥´Ê
+			tempWordCount = wordCount;  //å­˜å‚¨å½“å‰å•è¯çš„é¦–å­—æ¯ä½ç½®
+			tempWord = new char[i - tempWordCount + 1];  //å­˜å‚¨æ‹¼æ¥å•è¯
 
-			for(wordIndex = 0; wordIndex < (i - tempWordCount); wordIndex++)  //Ğ´ÈëtempWordµ¥´Ê
+			for(wordIndex = 0; wordIndex < (i - tempWordCount); wordIndex++)  //å†™å…¥tempWordå•è¯
 			{
 				tempWord[wordIndex] = m_essay[wordCount++];
 			}
@@ -245,10 +245,10 @@ essayReptiles::essayReptiles(char * aDate, char * aTitle, char * anEssay)
 
 			//cout << tempWord << endl;
 			
-			//´ËÊ± wordCount == i ÏÂ²½ wordCount Ö¸ÏòÏÂ¸öµ¥´ÊµÄÊ××ÖÄ¸
+			//æ­¤æ—¶ wordCount == i ä¸‹æ­¥ wordCount æŒ‡å‘ä¸‹ä¸ªå•è¯çš„é¦–å­—æ¯
 			wordCount = i + 1;
 
-			temp_location = new Location(sectionCount,sectionWordCount - ( i - tempWordCount),i - tempWordCount,NULL);//´æ´¢µ±Ç°µ¥´ÊµÄÎ»ÖÃ
+			temp_location = new Location(sectionCount,sectionWordCount - ( i - tempWordCount),i - tempWordCount,NULL);//å­˜å‚¨å½“å‰å•è¯çš„ä½ç½®
 			temp_seed = new Seed(tempWord,1,temp_location,NULL);
 
 			/*cout << temp_location ->getRow() << endl;
@@ -258,28 +258,28 @@ essayReptiles::essayReptiles(char * aDate, char * aTitle, char * anEssay)
 			cout << temp_seed ->getLocationList() << endl;
 			cout << temp_seed ->getNext() << endl;*/
 
-			//É¨ÃèÒÑÓĞ¼üÖµÁ´±í
+			//æ‰«æå·²æœ‰é”®å€¼é“¾è¡¨
 			temp_seed_p = m_seedList;
-			while( temp_seed_p && (strcmp(temp_seed_p ->getKey(),tempWord)) && (temp_seed_p ->getNext()) )  //ÕÒµ½µ±Ç°ÖµÊÇ·ñÒÑÓĞÎ»ÖÃÁĞ±í
+			while( temp_seed_p && (strcmp(temp_seed_p ->getKey(),tempWord)) && (temp_seed_p ->getNext()) )  //æ‰¾åˆ°å½“å‰å€¼æ˜¯å¦å·²æœ‰ä½ç½®åˆ—è¡¨
 			{
 				temp_seed_p = temp_seed_p ->getNext();
 			}
 			seed_p = &temp_seed_p;
 			
-			if( !(*seed_p) ) //µ±µÚÒ»´Îtemp_seed == NULLÊ±
+			if( !(*seed_p) ) //å½“ç¬¬ä¸€æ¬¡temp_seed == NULLæ—¶
 			{
-				m_seedList = temp_seed;  // °Ñµ±Ç°¼üÖµµÄµØÖ·½»¸øseedList
-				m_seedSize++;         //¼üÖµ++
+				m_seedList = temp_seed;  // æŠŠå½“å‰é”®å€¼çš„åœ°å€äº¤ç»™seedList
+				m_seedSize++;         //é”®å€¼++
 			}
-			else if( !(strcmp((*seed_p) ->getKey(),tempWord)) )  //²éµ½¹Ø¼üÖµ
+			else if( !(strcmp((*seed_p) ->getKey(),tempWord)) )  //æŸ¥åˆ°å…³é”®å€¼
 			{	
-				(*seed_p) ->setFrequency((*seed_p) ->getFrequency() + 1);  //seedÆµÊı¼ÓÒ»
+				(*seed_p) ->setFrequency((*seed_p) ->getFrequency() + 1);  //seedé¢‘æ•°åŠ ä¸€
 
-				if( (*seed_p) ->getFrequency() > frequencyFlag )  //Èç¹ûµ±Ç°¼üÖµÆµÊı´óÓÚ frequencyFlag
+				if( (*seed_p) ->getFrequency() > frequencyFlag )  //å¦‚æœå½“å‰é”®å€¼é¢‘æ•°å¤§äº frequencyFlag
 				{
-					frequencyFlag = (*seed_p) ->getFrequency();  //¸üĞÂ frequencyFlag
+					frequencyFlag = (*seed_p) ->getFrequency();  //æ›´æ–° frequencyFlag
 					
-					//¸üĞÂ¼üÖµ
+					//æ›´æ–°é”®å€¼
 					delete []m_unique;
 					m_unique = new char[strlen((*seed_p) ->getKey()) + 1]; 
 					strcpy(m_unique,(*seed_p) ->getKey());
@@ -287,20 +287,20 @@ essayReptiles::essayReptiles(char * aDate, char * aTitle, char * anEssay)
 				
 				location_p = (*seed_p) ->getLocationList();
 
-				while( location_p ->getNext() )    //ÕÒµ½¸Ã¼üÖµÎ»ÖÃÁĞ±íµÄ×îºó¸öÎ»ÖÃ
+				while( location_p ->getNext() )    //æ‰¾åˆ°è¯¥é”®å€¼ä½ç½®åˆ—è¡¨çš„æœ€åä¸ªä½ç½®
 				{
 					location_p = location_p ->getNext();
 				}
 				location_p ->setNext(temp_location);
 			}
-			else		//µ±ÎŞ¸Ã¼üÖµµÄ¼ÇÂ¼Ê±
+			else		//å½“æ— è¯¥é”®å€¼çš„è®°å½•æ—¶
 			{
-				(*seed_p) ->setNext(temp_seed);         //ÔÚ¼üÖµÁĞ±í×îºóÌí¼ÓĞÂ¼üÖµ
-				m_seedSize++;                 //¼üÖµ++
+				(*seed_p) ->setNext(temp_seed);         //åœ¨é”®å€¼åˆ—è¡¨æœ€åæ·»åŠ æ–°é”®å€¼
+				m_seedSize++;                 //é”®å€¼++
 			}
 		}
 
-		//É¨Ãèµ½Ò»¾ä   //Ò»¸öÈõÖÇµÄÅĞ¶Ï
+		//æ‰«æåˆ°ä¸€å¥   //ä¸€ä¸ªå¼±æ™ºçš„åˆ¤æ–­
 		if( m_essay[i] == '.' || m_essay[i] == '!' || m_essay[i] == ';' || m_essay[i] == '?' )   
 		{
 			tempSection = new char[sectionWordCount + 2];
@@ -312,7 +312,7 @@ essayReptiles::essayReptiles(char * aDate, char * aTitle, char * anEssay)
 			//tempSection[wordIndex] = m_essay[i];
 			tempSection[wordIndex+1] = '\0';
 
-			if( !temp_section_p )   //µÚÒ»¶Î
+			if( !temp_section_p )   //ç¬¬ä¸€æ®µ
 			{
 				m_sectionList = new Section(sectionCount,tempSection,NULL);
 				temp_section_p = m_sectionList;
@@ -324,25 +324,25 @@ essayReptiles::essayReptiles(char * aDate, char * aTitle, char * anEssay)
 			}
 
 			m_sectionSize++;
-			sectionWordCount = 0;   //¶ÎÂä×Ö·û¼ÆÊıÆ÷¹éÁã
-			sectionCount++;        //¶ÎÂäÊı¼ÓÒ»
+			sectionWordCount = 0;   //æ®µè½å­—ç¬¦è®¡æ•°å™¨å½’é›¶
+			sectionCount++;        //æ®µè½æ•°åŠ ä¸€
 			i++;
 		}
 	}	
 }
 essayReptiles::~essayReptiles()
 {
-	//¶ÌÎÄĞÅÏ¢
-	delete m_date;  //ÎÒµÄÊ±¼ä
-	delete m_title;  //ÎÒµÄ±êÌâ
-	delete m_essay;  //ÎÒµÄÄÚÈİ
-	delete m_unique; //ÎÒµÄÌØÓĞ(ÆµÊı×î¸ßµÄÖµ)
+	//çŸ­æ–‡ä¿¡æ¯
+	delete m_date;  //æˆ‘çš„æ—¶é—´
+	delete m_title;  //æˆ‘çš„æ ‡é¢˜
+	delete m_essay;  //æˆ‘çš„å†…å®¹
+	delete m_unique; //æˆ‘çš„ç‰¹æœ‰(é¢‘æ•°æœ€é«˜çš„å€¼)
 
-	//¶ÎÂäÁĞ±í
+	//æ®µè½åˆ—è¡¨
 	delete m_sectionList;
 
-	//¼üÖµÁĞ±í
-	delete m_seedList; //¼üÖµ¸öÊı
+	//é”®å€¼åˆ—è¡¨
+	delete m_seedList; //é”®å€¼ä¸ªæ•°
 }
 void essayReptiles::setDate( char *aDate)
 {
@@ -446,17 +446,17 @@ bool essayReptiles::Search(char * aStr) const
 		temp_seed_p = temp_seed_p ->getNext();
 	}
 
-	if( !strcmp(temp_seed_p ->getKey(),search_key) )   //ÕÒµ½¸Ã¼üÖµ
+	if( !strcmp(temp_seed_p ->getKey(),search_key) )   //æ‰¾åˆ°è¯¥é”®å€¼
 	{	
 		cout << "Find it! ^_^" << endl;
 		cout << "< " << temp_seed_p ->getKey() << " >" << " appears " << temp_seed_p ->getFrequency() << " times in this text!" << endl;
 		cout << "Hey! Here: " << endl;
 		
-		temp_location_p = temp_seed_p ->getLocationList();  //»ñµÃµ±Ç°¼üÖµµÄÎ»ÖÃÁ´±í
+		temp_location_p = temp_seed_p ->getLocationList();  //è·å¾—å½“å‰é”®å€¼çš„ä½ç½®é“¾è¡¨
 
-		while( temp_location_p )   //ÒÀ´Î±éÀú¸Ã¼üÖµµÄÎ»ÖÃÁ´±í
+		while( temp_location_p )   //ä¾æ¬¡éå†è¯¥é”®å€¼çš„ä½ç½®é“¾è¡¨
 		{
-			 //µ±¸Ã¼üÖµµÄÎ»ÖÃÔÚÍ¬¶ÎÖĞÓĞ¶à¸öÎ»ÖÃ³öÏÖÊ±,
+			 //å½“è¯¥é”®å€¼çš„ä½ç½®åœ¨åŒæ®µä¸­æœ‰å¤šä¸ªä½ç½®å‡ºç°æ—¶,
 			if( temp_location_p ->getNext() && temp_location_p ->getRow() == temp_location_p ->getNext() ->getRow() )  
 			{
 				cout << '(' << temp_location_p ->getRow() << ',' << temp_location_p ->getCol() << ") ";
@@ -466,9 +466,9 @@ bool essayReptiles::Search(char * aStr) const
 			}
 
 			temp_section_p = m_sectionList;
-			while( temp_section_p )   //ÒÀ´Î±éÀú¸Ã¶ÎÁĞ±í
+			while( temp_section_p )   //ä¾æ¬¡éå†è¯¥æ®µåˆ—è¡¨
 			{
-				if( temp_section_p ->getMark() == temp_location_p ->getRow() )   //µ±¸Ã¶ÎµÄ mark ==  ¸Ã¼üÖµµÄËùÔÚµÄ¶ÎÊ±
+				if( temp_section_p ->getMark() == temp_location_p ->getRow() )   //å½“è¯¥æ®µçš„ mark ==  è¯¥é”®å€¼çš„æ‰€åœ¨çš„æ®µæ—¶
 				{
 					cout << '(' << temp_location_p ->getRow() << ',' << temp_location_p ->getCol() << ") ";
 
@@ -476,19 +476,19 @@ bool essayReptiles::Search(char * aStr) const
 					temp_conten_p = new char[strlen(temp_section_p ->getContent()) + 1];
 					strcpy(temp_conten_p,temp_section_p ->getContent());
 
-					for(int iCol = 0; temp_conten_p[iCol] != '\0'; iCol++)  //±éÀú¸Ã¶ÎÄÚÈİ
+					for(int iCol = 0; temp_conten_p[iCol] != '\0'; iCol++)  //éå†è¯¥æ®µå†…å®¹
 					{
-						if( iCol == temp_location_p ->getCol() )  //µ±¸Ã¶Î×ßµ½¸Ã¼üÖµµÄÎ»ÖÃÊ±
+						if( iCol == temp_location_p ->getCol() )  //å½“è¯¥æ®µèµ°åˆ°è¯¥é”®å€¼çš„ä½ç½®æ—¶
 						{	
 							JR_SetColor(12,10);   //change your words color!  //
-							for(int iLocation = 0; iLocation < temp_location_p ->getLength(); iLocation++, iCol++)  //Êä³ö¸Ãµ¥´Ê
+							for(int iLocation = 0; iLocation < temp_location_p ->getLength(); iLocation++, iCol++)  //è¾“å‡ºè¯¥å•è¯
 							{
 								cout << temp_section_p ->getContent()[iCol];
 							}
 						}
 
 						JR_SetColor(7,0);
-						cout << temp_section_p ->getContent()[iCol];  //¸Ã¶ÎµÄ·Ç¹Ø¼ü×Ö²¿·Ö
+						cout << temp_section_p ->getContent()[iCol];  //è¯¥æ®µçš„éå…³é”®å­—éƒ¨åˆ†
 					}
 
 					cout << endl;
@@ -502,7 +502,7 @@ bool essayReptiles::Search(char * aStr) const
 		cout << endl;
 
 		return true;  
-	}  //´æÔÚ
+	}  //å­˜åœ¨
 
 	cout << "Sorry! I can't find it! -_-|||" << endl;
 	return false;

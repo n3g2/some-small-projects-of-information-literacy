@@ -7,7 +7,7 @@
 
 using namespace std;
 
-//ÔªËØÎ»ÖÃ
+//å…ƒç´ ä½ç½®
 class Location
 {
 public:
@@ -26,13 +26,13 @@ public:
 
 	void display() const;
 private:
-	int m_row; //µÚ¼¸¶Î
-	int m_col; //µÚ¼¸¸ö×Ö
-	int m_length; //³¤¶È
-	Location *m_next;	//ÏÂ¸öÎ»ÖÃ
+	int m_row; //ç¬¬å‡ æ®µ
+	int m_col; //ç¬¬å‡ ä¸ªå­—
+	int m_length; //é•¿åº¦
+	Location *m_next;	//ä¸‹ä¸ªä½ç½®
 };
 
-//ËÑË÷¼üÖµÀà(Ë÷Òı±íÔªËØ)
+//æœç´¢é”®å€¼ç±»(ç´¢å¼•è¡¨å…ƒç´ )
 class Seed
 {
 public:
@@ -78,7 +78,7 @@ private:
 	Section * m_next;
 };
 
-//¶ÌÎÄÅÀ³æÀà
+//çŸ­æ–‡çˆ¬è™«ç±»
 class essayReptiles
 {
 public:
@@ -101,26 +101,26 @@ public:
 
 	void displayDate() const;
 	void displayTitle() const;
-	void displayEssay() const;  //ÏÔÊ¾È«ÎÄ
-	void displayUnique() const;  //ÏÔÊ¾ÎÒµÄÌØÓĞ£¨ÆµÊı×î¸ßµÄ¼üÖµ£©
-	void displaySectionLists() const; //ÏÔÊ¾·Ö¶ÎºóµÄ¶ÌÎÄ
-	void displaySeedLists() const;	//ÏÔÊ¾¼üÖµÁĞ±í
+	void displayEssay() const;  //æ˜¾ç¤ºå…¨æ–‡
+	void displayUnique() const;  //æ˜¾ç¤ºæˆ‘çš„ç‰¹æœ‰ï¼ˆé¢‘æ•°æœ€é«˜çš„é”®å€¼ï¼‰
+	void displaySectionLists() const; //æ˜¾ç¤ºåˆ†æ®µåçš„çŸ­æ–‡
+	void displaySeedLists() const;	//æ˜¾ç¤ºé”®å€¼åˆ—è¡¨
 
 	bool Search(char * aStr) const;
 private:
-	//¶ÌÎÄĞÅÏ¢
-	char * m_date;  //ÎÒµÄÊ±¼ä
-	char * m_title;  //ÎÒµÄ±êÌâ
-	char * m_essay;  //ÎÒµÄÄÚÈİ
-	char * m_unique; //ÎÒµÄÌØÓĞ(ÆµÊı×î¸ßµÄÖµ)
+	//çŸ­æ–‡ä¿¡æ¯
+	char * m_date;  //æˆ‘çš„æ—¶é—´
+	char * m_title;  //æˆ‘çš„æ ‡é¢˜
+	char * m_essay;  //æˆ‘çš„å†…å®¹
+	char * m_unique; //æˆ‘çš„ç‰¹æœ‰(é¢‘æ•°æœ€é«˜çš„å€¼)
 
-	//¶ÌÎÄ·Ö¶ÎÊı×é
-	Section * m_sectionList; //ÎÒµÄ·Ö¶ÎÄÚÈİ
-	int m_sectionSize; //ÎÒµÄ¶ÎÊı
+	//çŸ­æ–‡åˆ†æ®µæ•°ç»„
+	Section * m_sectionList; //æˆ‘çš„åˆ†æ®µå†…å®¹
+	int m_sectionSize; //æˆ‘çš„æ®µæ•°
 	
-	//¼üÖµÁĞ±í2
-	Seed * m_seedList; //¼üÖµÁĞ±íÊ×µØÖ·
-	int m_seedSize;	//¼üÖµ¸öÊı
+	//é”®å€¼åˆ—è¡¨2
+	Seed * m_seedList; //é”®å€¼åˆ—è¡¨é¦–åœ°å€
+	int m_seedSize;	//é”®å€¼ä¸ªæ•°
 };
 
 #endif  // #ifndef INVERTEDINDEX_H

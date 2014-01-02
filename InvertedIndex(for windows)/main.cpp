@@ -4,7 +4,7 @@
 #include "InvertedIndex.h"
 #include "JR_Color.h"
 
-//²âÊÔÓÃÎÄµµ
+//æµ‹è¯•ç”¨æ–‡æ¡£
 //#define TEXT_COUNT 3
 //static const char * const test_text[] =
 //{
@@ -30,7 +30,7 @@
 //};
 //
 //void PrintDocuments()
-//{//´òÓ¡ÎÄµµ
+//{//æ‰“å°æ–‡æ¡£
 //	printf("PrintDocuments();\n");
 //	const char * const * p = test_text;
 //	int i=0;
@@ -43,7 +43,7 @@
 
 int main ( void )
 {
-	cout << "                 *************Welcome essay eptiles v0.1**************                            " << endl;
+	cout << "                 *************Welcome essay eptiles v0.1**************" << endl;
 	essayReptiles anEssay("2014-1-1",
 		"Testing text",
 		"Test cases for search engine is depends on the SRS(including business req.), web page layout (GUI) dependingon this we are writing test cases."
@@ -68,19 +68,19 @@ int main ( void )
 		"The skinny man said he was more polite because he always tipped his hat to ladies. "
 		"But the fat man knew he was more courteous because, whenever he got up and offered his seat, two ladies could sit down. "
 		);
-	//anEssay.displayTitle();  //ÏÔÊ¾¸ÃÆª¶ÌÎÄµÄ±êÌâ
+	//anEssay.displayTitle();  //æ˜¾ç¤ºè¯¥ç¯‡çŸ­æ–‡çš„æ ‡é¢˜
 
-	//anEssay.displayDate();   //ÏÔÊ¾¸ÃÆª¶ÌÎÄµÄÈÕÆÚ
+	//anEssay.displayDate();   //æ˜¾ç¤ºè¯¥ç¯‡çŸ­æ–‡çš„æ—¥æœŸ
 
-	//anEssay.displayEssay();  //ÏÔÊ¾¸ÃÆª¶ÌÎÄ
+	//anEssay.displayEssay();  //æ˜¾ç¤ºè¯¥ç¯‡çŸ­æ–‡
 
-	//anEssay.displayUnique(); //ÏÔÊ¾¸ÃÆª¶ÌÎÄµÄÌØÊâ¼üÖµ£¨ÆµÊı×î¸ßµÄ£©
+	//anEssay.displayUnique(); //æ˜¾ç¤ºè¯¥ç¯‡çŸ­æ–‡çš„ç‰¹æ®Šé”®å€¼ï¼ˆé¢‘æ•°æœ€é«˜çš„ï¼‰
 
-	//anEssay.displaySectionLists();  //ÏÔÊ¾¸ÃÆª¶ÌÎÄµÄ·Ö¶ÎºóµÄ½á¹û
+	//anEssay.displaySectionLists();  //æ˜¾ç¤ºè¯¥ç¯‡çŸ­æ–‡çš„åˆ†æ®µåçš„ç»“æœ
 
-	//anEssay.displaySeedLists();    //ÏÔÊ¾¸ÃÆª¶ÌÎÄµÄ¼üÖµÁĞ±í
+	//anEssay.displaySeedLists();    //æ˜¾ç¤ºè¯¥ç¯‡çŸ­æ–‡çš„é”®å€¼åˆ—è¡¨
 
-	//anEssay.Search("the");        //ËÑË÷Ä³Öµ
+	//anEssay.Search("the");        //æœç´¢æŸå€¼
 
 	anEssay.Search("2");
 	anEssay.Search("10");

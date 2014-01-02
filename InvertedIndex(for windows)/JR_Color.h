@@ -1,6 +1,6 @@
 /*
 * JR_Color.h (1.0)
-* ×ÖÌõ½çÃæÑÕÉ«¿ØÖÆº¯Êı¶¨Òå
+* å­—æ¡ç•Œé¢é¢œè‰²æ§åˆ¶å‡½æ•°å®šä¹‰
 *
 * By Eric-JR Chen
 * diamont1001@163.com
@@ -12,25 +12,25 @@
 
 #include <windows.h>
 
-#define BLACK           0   //ºÚÉ«
-#define WHITE           1   //°×É«?   //Ç³À¶É«(²âÊÔ¾ÀÕı)
-#define ARMY_GREEN      2   //¾üÂÌÉ«
-#define BLUE_GREEN      3   //À¶ÂÌÉ«
-#define DEEP_RED        4   //ÉîºìÉ«
-#define PURPLE          5   //×ÏÉ«
-#define YELLOW_GREEN    6   //»ÆÂÌÉ«
-#define GREY            7   //»ÒÉ«     //windowsÄ¬ÈÏ
-#define DARK_GREY       8   //Éî»ÒÉ«
-#define BLUE            9   //À¶É«
-#define GREEN           10  //ÂÌÉ«
-#define BRIGHT_BLUE     11  //ÁÁÀ¶É«
-#define RED             12  //ºìÉ«
-#define LIGHT_PURPLE    13  //·Û×ÏÉ«
-#define YELLOW          14  //»ÆÉ«
-#define OFF_WHITE       15  //Ã×°×É«
+#define BLACK           0   //é»‘è‰²
+#define WHITE           1   //ç™½è‰²?   //æµ…è“è‰²(æµ‹è¯•çº æ­£)
+#define ARMY_GREEN      2   //å†›ç»¿è‰²
+#define BLUE_GREEN      3   //è“ç»¿è‰²
+#define DEEP_RED        4   //æ·±çº¢è‰²
+#define PURPLE          5   //ç´«è‰²
+#define YELLOW_GREEN    6   //é»„ç»¿è‰²
+#define GREY            7   //ç°è‰²     //windowsé»˜è®¤
+#define DARK_GREY       8   //æ·±ç°è‰²
+#define BLUE            9   //è“è‰²
+#define GREEN           10  //ç»¿è‰²
+#define BRIGHT_BLUE     11  //äº®è“è‰²
+#define RED             12  //çº¢è‰²
+#define LIGHT_PURPLE    13  //ç²‰ç´«è‰²
+#define YELLOW          14  //é»„è‰²
+#define OFF_WHITE       15  //ç±³ç™½è‰²
 
 
-/* ÉèÖÃÊä³öÑÕÉ« */
+/* è®¾ç½®è¾“å‡ºé¢œè‰² */
 void JR_SetColor(int textcolor, int bgcolor);
 
 #endif
